@@ -1,0 +1,501 @@
+:root {
+    --color-bg-primary: #1b2838;
+    --color-bg-secondary: #16202d;
+    --color-text-primary: #c7d5e0;
+    --color-text-secondary: #7a8288;
+    --color-accent-primary: #66c0f4;
+    --color-accent-primary-hover: #1999ff;
+    --color-accent-primary-rgb: 102, 192, 244;
+    --color-border-primary: #2a475e;
+    --color-pinned: #ffd700;
+    --color-white: #ffffff;
+
+    --color-tag-missable: #ff6b6b;
+    --color-tag-missable-hover: #ff5252;
+    --color-tag-online: #4CAF50;
+    --color-tag-online-hover: #45a049;
+    --color-tag-story: #9c27b0;
+    --color-tag-story-hover: #7b1fa2;
+    --color-tag-difficulty: #ff9800;
+    --color-tag-difficulty-hover: #f57c00;
+    --color-tag-collectathon: #2196f3;
+    --color-tag-collectathon-hover: #1976d2;
+
+    --space-xxs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+
+    --font-size-xs: 0.8rem;
+    --font-size-sm: 0.9rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.2rem;
+    --font-size-xxl: 1.5rem;
+    --font-size-xxxl: 2.5rem;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+}
+
+header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+h1 {
+    font-size: var(--font-size-xxxl);
+    color: var(--color-accent-primary);
+    margin-bottom: var(--space-xs);
+}
+
+h2 {
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.breadcrumb {
+    margin-bottom: var(--space-md);
+    color: var(--color-text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-md);
+}
+
+.game-card {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.game-info h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+.game-info p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: auto;
+}
+
+.progress-container {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.progress-bar {
+    width: 100%;
+    height: var(--space-xs);
+    background-color: var(--color-border-primary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--color-accent-primary);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    width: 100%;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border-primary);
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    gap: var(--space-md);
+    width: 100%;
+}
+
+.achievement-card.pinned {
+    border-color: var(--color-pinned);
+    order: -1;
+}
+
+.achievement-card.completed {
+    border-color: var(--color-border-primary);
+    opacity: 0.7;
+}
+
+.achievement-card .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-accent-primary);
+    border-radius: var(--radius-sm);
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.achievement-card .checkbox:hover {
+    transform: scale(1.1);
+    background-color: rgba(var(--color-accent-primary-rgb), 0.1);
+}
+
+.achievement-card.completed .checkbox {
+    background-color: var(--color-accent-primary);
+    border-color: var(--color-accent-primary);
+}
+
+.achievement-card.completed .checkbox::after {
+    content: '✓';
+    position: absolute;
+    color: var(--color-bg-primary);
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.achievement-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.achievement-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.achievement-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+}
+
+.achievement-info h3 {
+    margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+}
+
+.achievement-info p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.achievement-tags {
+    display: flex;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.achievement-tag {
+    background-color: var(--color-accent-primary);
+    color: var(--color-white);
+    padding: var(--space-xxs) var(--space-sm);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: capitalize;
+}
+
+.achievement-tag:hover {
+    background-color: var(--color-accent-primary-hover);
+    transform: scale(1.05);
+}
+
+.achievement-card.completed .achievement-tag {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.achievement-card.completed .achievement-tag:hover {
+    transform: none;
+    background-color: var(--color-accent-primary);
+}
+
+.achievement-tag.missable {
+    background-color: var(--color-tag-missable);
+}
+
+.achievement-tag.missable:hover {
+    background-color: var(--color-tag-missable-hover);
+}
+
+.achievement-tag.online {
+    background-color: var(--color-tag-online);
+}
+
+.achievement-tag.online:hover {
+    background-color: var(--color-tag-online-hover);
+}
+
+.achievement-tag.story {
+    background-color: var(--color-tag-story);
+}
+
+.achievement-tag.story:hover {
+    background-color: var(--color-tag-story-hover);
+}
+
+.achievement-tag.difficulty {
+    background-color: var(--color-tag-difficulty);
+}
+
+.achievement-tag.difficulty:hover {
+    background-color: var(--color-tag-difficulty-hover);
+}
+
+.achievement-tag.collectathon {
+    background-color: var(--color-tag-collectathon);
+}
+
+.achievement-tag.collectathon:hover {
+    background-color: var(--color-tag-collectathon-hover);
+}
+
+.achievement-card.completed .achievement-info h3 {
+    color: var(--color-text-secondary);
+}
+
+.achievement-card.completed .achievement-info p {
+    color: var(--color-text-secondary);
+}
+
+.pin-button {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    padding: var(--space-xs);
+    transition: all 0.2s ease;
+}
+
+.pin-button:hover {
+    color: var(--color-pinned);
+    transform: scale(1.1);
+}
+
+.achievement-card.pinned .pin-button {
+    color: var(--color-pinned);
+}
+
+.completed-separator {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.completed-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-border-primary);
+}
+
+.add-tag-button {
+    background-color: var(--color-border-primary);
+    color: var(--color-accent-primary);
+    border: 2px dashed var(--color-accent-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xxs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    visibility: hidden;
+    opacity: 0;
+    align-items: center;
+    gap: var(--space-xxs);
+    display: inline-flex;
+}
+
+.achievement-card:not(.completed):hover .add-tag-button {
+    visibility: visible;
+    opacity: 1;
+}
+
+.add-tag-button:hover {
+    background-color: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+}
+
+.tag-selector {
+    position: fixed;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-xs);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    min-width: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tag-selector.show {
+    display: flex;
+}
+
+.tag-option {
+    padding: var(--space-xxs) var(--space-xs);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s ease;
+}
+
+.tag-option:hover {
+    background-color: var(--color-border-primary);
+}
+
+.tag-option.missable {
+    color: var(--color-tag-missable);
+}
+
+.tag-option.online {
+    color: var(--color-tag-online);
+}
+
+.tag-option.story {
+    color: var(--color-tag-story);
+}
+
+.tag-option.difficulty {
+    color: var(--color-tag-difficulty);
+}
+
+.tag-option.collectathon {
+    color: var(--color-tag-collectathon);
+}
+
+.reset-button {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border: none;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.reset-button:hover {
+    background-color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--space-md);
+    }
+
+    .achievement-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-md);
+    }
+
+    .achievement-icon {
+        margin-bottom: var(--space-md);
+    }
+
+    .achievement-info {
+        text-align: center;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+} 

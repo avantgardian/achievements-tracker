@@ -1,0 +1,28 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor Configuration
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Node Modules (Good practice even if not currently used)
+node_modules/
+
+# Log files
+*.log
+
+# User-specific files
+CONTEXT.md
+
+# Build output (if you add a build process later)
+# dist/
+# build/
+
+# Other temporary files
+# *.tmp 

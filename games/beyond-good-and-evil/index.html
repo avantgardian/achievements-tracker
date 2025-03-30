@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Good & Evil - 20th Anniversary Edition - Achievement Tracker</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">Games</a> / 
+                <span>Beyond Good & Evil - 20th Anniversary Edition</span>
+            </nav>
+            <h1>Beyond Good & Evil - 20th Anniversary Edition</h1>
+            <h2>Achievement Tracker</h2>
+            <div class="stats">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span id="progress-text">0/34 Achievements</span>
+                    <button id="reset-button" class="reset-button">Reset Progress</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="achievements-list" id="achievements-grid">
+                <!-- Achievements will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/tags.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="../../js/script.js"></script>
+    <script>
+        // Initialize the page after all scripts are loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define the game ID for this page
+            const gameId = 'beyond-good-and-evil'; 
+            
+            // Call the main initialization function from script.js
+            initializeApp(gameId);
+        });
+    </script>
+</body>
+</html> 
