@@ -25,4 +25,7 @@ CONTEXT.md
 # build/
 
 # Other temporary files
-# *.tmp 
+# *.tmp
+
+# Custom files
+SUGGESTIONS.md 

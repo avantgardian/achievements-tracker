@@ -148,7 +148,16 @@ function generateAchievementCard(achievement, gameId) {
 }
 
 // Toggle achievement completion
-function toggleAchievement(id, gameId) {
+async function toggleAchievement(id, gameId) {
+    const cardElement = document.querySelector(`.achievement-card[data-id="${id}"]`);
+    
+    // Add class and wait for animation if the card exists
+    if (cardElement) {
+        cardElement.classList.add('is-moving-out');
+        await new Promise(resolve => setTimeout(resolve, 300)); // Wait for animation (match CSS)
+    }
+
+    // --- Existing logic --- 
     const achievements = loadAchievements(gameId); // Load once
     const achievement = achievements.find(a => a.id === parseInt(id));
     
@@ -163,7 +172,16 @@ function toggleAchievement(id, gameId) {
 }
 
 // Toggle achievement pin
-function togglePin(id, gameId) {
+async function togglePin(id, gameId) {
+    const cardElement = document.querySelector(`.achievement-card[data-id="${id}"]`);
+    
+    // Add class and wait for animation if the card exists
+    if (cardElement) {
+        cardElement.classList.add('is-moving-out');
+        await new Promise(resolve => setTimeout(resolve, 300)); // Wait for animation (match CSS)
+    }
+    
+    // --- Existing logic --- 
     const achievements = loadAchievements(gameId); // Load once
     const achievement = achievements.find(a => a.id === parseInt(id));
     
