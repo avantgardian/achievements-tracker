@@ -28,4 +28,11 @@ CONTEXT.md
 # *.tmp
 
 # Custom files
-SUGGESTIONS.md 
+SUGGESTIONS.md
+
+# Environment variables
+.env
+
+# Downloaded game data (optional, adjust if needed)
+# games/*/images/*
+# games/*/js/achievements.js 

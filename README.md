@@ -84,4 +84,61 @@ A simple, static web application for tracking video game achievement progress. B
 4.  **Add Images:**
     *   Place achievement icons referenced in `achievements.js` into `images/achievements/my-new-game/`.
     *   Add a cover image for the game list page into `images/games/my-new-game-cover.jpg` (or similar naming).
-5.  **Link from Main `index.html`:** Add a new game card entry to the main `index.html` file, linking to your new game's `index.html` and using its cover image. 
+5.  **Link from Main `index.html`:** Add a new game card entry to the main `index.html` file, linking to your new game's `index.html` and using its cover image.
+
+## Fetching Game Data (Steam)
+
+To automatically fetch achievement data, descriptions, icons, and the game cover image directly from Steam, you can use the provided Python helper script.
+
+**Prerequisites:**
+
+1.  **Python 3:** Ensure you have Python 3 installed on your system.
+2.  **Steam Web API Key:** You need a Steam Web API key. You can obtain one from the [Steam Developer website](https://steamcommunity.com/dev/apikey).
+3.  **Dependencies:** Install the required Python libraries:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+**Setup:**
+
+1.  **API Key:** Create a file named `.env` in the project's root directory.
+2.  Add your Steam Web API key to the `.env` file like this:
+    ```
+    STEAM_API_KEY=YOUR_ACTUAL_STEAM_API_KEY
+    ```
+    Replace `YOUR_ACTUAL_STEAM_API_KEY` with the key you obtained.
+    *(This `.env` file is included in `.gitignore` to prevent accidental commits of your key).*
+
+**Running the Script:**
+
+Execute the script from your terminal, providing the Steam App ID of the game you want to add:
+
+```bash
+python fetch_steam_data.py <STEAM_APP_ID>
+```
+
+Replace `<STEAM_APP_ID>` with the numerical App ID of the game (you can usually find this in the game's store page URL on Steam).
+
+**Example:**
+
+```bash
+python fetch_steam_data.py 2556990
+```
+
+**What the script does:**
+
+*   Fetches game details (name, cover image) from the Steam Storefront API.
+*   Fetches achievement details (ID, name, description, icon URL) from the Steam Web API.
+*   Creates the necessary directory structure: `games/<game_name_sanitized>/` with `js/` and `images/` subdirectories.
+*   Downloads the game's header image as `games/<game_name_sanitized>/images/header.jpg`.
+*   Downloads each achievement's icon into `games/<game_name_sanitized>/images/` (named `<achievement_api_name>.jpg`).
+*   Generates the `games/<game_name_sanitized>/js/achievements.js` file, populating `window.gameAchievements` with the fetched data and correct relative image paths.
+*   **Finds an existing game's `index.html` to use as a template.** (Requires at least one game to exist already).
+*   **Creates the new game's `index.html` page** by copying the template and replacing the title, headings, breadcrumb, total achievement count, and `gameId`.
+*   **Adds a new game card to the main `index.html`** file, linking to the new game page and using its header image.
+
+**After running the script:**
+
+*   Verify the generated files (`games/<game_name_sanitized>/index.html`, `js/achievements.js`, and the images).
+*   Verify the new game card appears correctly on the main `index.html` page.
+*   You might need to manually create a placeholder image at `images/games/placeholder_cover.jpg` if the script couldn't download a game's cover image and you want a fallback. 

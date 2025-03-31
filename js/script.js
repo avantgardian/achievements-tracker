@@ -123,11 +123,15 @@ function generateAchievementCard(achievement, gameId) {
 
     // console.log('Tags HTML:', tagsHtml); // Debug log removed
 
+    // --- CORRECTED IMAGE SRC --- 
+    // The achievement.icon path is already relative to the game's index.html (e.g., "images/icon.jpg")
+    const iconPath = achievement.icon ? achievement.icon : ''; // Use icon path directly, provide fallback if empty
+
     return `
         <div class="achievement-card ${achievement.completed ? 'completed' : ''} ${achievement.pinned ? 'pinned' : ''}" data-id="${achievement.id}">
             <div class="checkbox"></div>
             <div class="achievement-icon">
-                <img src="../../images/achievements/${gameId}/${achievement.icon}" alt="${achievement.name}">
+                <img src="${iconPath}" alt="${achievement.name}">
             </div>
             <div class="achievement-info">
                 <h3>${achievement.name}</h3>
