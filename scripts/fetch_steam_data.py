@@ -7,13 +7,20 @@ import shutil # Added for file copying
 from pathlib import Path # Added for easier path manipulation
 from dotenv import load_dotenv # type: ignore
 
-# Load environment variables from .env file
-load_dotenv()
+# Define project root relative to this script file
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file (expected in project root)
+load_dotenv(dotenv_path=PROJECT_ROOT / ".env")
 
 STEAM_API_KEY = os.getenv("STEAM_API_KEY")
 if not STEAM_API_KEY:
-    print("Error: STEAM_API_KEY not found in .env file.")
-    exit(1)
+    # Try loading from script directory as fallback?
+    load_dotenv()
+    STEAM_API_KEY = os.getenv("STEAM_API_KEY")
+    if not STEAM_API_KEY:
+        print("Error: STEAM_API_KEY not found in .env file in project root or script directory.")
+        exit(1)
 
 # --- Helper Functions ---
 
@@ -55,11 +62,11 @@ def download_image(url, filepath):
         print(f"Error saving image {filepath}: {e}")
         return False
 
-def find_template_html(games_dir="games"):
+def find_template_html(games_dir_name="games"):
     """Finds the first game's index.html to use as a template."""
-    games_path = Path(games_dir)
+    games_path = PROJECT_ROOT / games_dir_name # Use PROJECT_ROOT
     if not games_path.is_dir():
-        print(f"Error: Games directory '{games_dir}' not found.")
+        print(f"Error: Games directory '{games_path}' not found.")
         return None
 
     for item in games_path.iterdir():
@@ -69,7 +76,7 @@ def find_template_html(games_dir="games"):
                 print(f"Using template: {template_html}")
                 return template_html
 
-    print(f"Error: No existing game directory found in '{games_dir}' to use as a template.")
+    print(f"Error: No existing game directory found in '{games_path}' to use as a template.")
     print("Please add at least one game manually first.")
     return None
 
@@ -157,8 +164,8 @@ def process_game(app_id):
         # Optional: Still add to main index? Decided against it for now.
         return
 
-    # 3. Create Directories
-    base_game_dir = Path("games") / sanitized_game_name
+    # 3. Create Directories (Paths relative to project root)
+    base_game_dir = PROJECT_ROOT / "games" / sanitized_game_name
     js_dir = base_game_dir / "js"
     images_dir = base_game_dir / "images"
     try:
@@ -293,7 +300,7 @@ def process_game(app_id):
         return
 
     # 9. Update Main index.html
-    main_index_path = Path("index.html")
+    main_index_path = PROJECT_ROOT / "index.html" # Use PROJECT_ROOT
     if not main_index_path.is_file():
         print("Warning: Main index.html not found. Skipping update.")
     else:
@@ -331,12 +338,14 @@ def process_game(app_id):
                              # Adjust insertion point as we added a character
                              insertion_point_index += 1
 
-                    # Prepare the new game data
+                    # Prepare the new game data (Paths relative to project root)
                     game_page_path = f"games/{sanitized_game_name}/index.html"
-                    cover_image_path_relative = f"games/{sanitized_game_name}/images/header.jpg" if cover_filepath else "images/games/placeholder_cover.jpg"
-                    if not cover_filepath:
-                         print("Note: Using placeholder image path in main index.html as cover download failed or was missing.")
-                         # cover_image_path_relative = "images/games/placeholder_cover.jpg"
+                    # Check if cover_filepath (absolute) exists, then make relative path
+                    if cover_filepath and cover_filepath.is_file():
+                        cover_image_path_relative = cover_filepath.relative_to(PROJECT_ROOT).as_posix()
+                    else:
+                        cover_image_path_relative = "images/games/placeholder_cover.jpg"
+                        print("Note: Using placeholder image path in main index.html as cover download failed or was missing.")
 
                     # Escape double quotes and backslashes within names/paths for JS string safety
                     js_safe_href = game_page_path.replace('\\', '\\\\').replace('"', '\\"')
