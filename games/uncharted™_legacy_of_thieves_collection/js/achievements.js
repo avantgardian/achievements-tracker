@@ -562,21 +562,21 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_GOLD_WEAPONS",
         "name": "Bring in the Big Guns",
-        "description": "",
+        "description": "Collect all gold weapons",
         "icon": "images/TROPHY_NAME_GOLD_WEAPONS.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_JEEP_QUICK_KILL",
         "name": "4x4x4",
-        "description": "",
+        "description": "Kill 4 enemies in quick succession while in a jeep",
         "icon": "images/TROPHY_NAME_JEEP_QUICK_KILL.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_ZIPLINES",
         "name": "Drop Me a Line",
-        "description": "",
+        "description": "Use 10 ziplines",
         "icon": "images/TROPHY_NAME_ZIPLINES.jpg",
         "tags": []
     },

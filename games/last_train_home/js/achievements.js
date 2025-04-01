@@ -240,14 +240,14 @@ window.gameAchievements = [
     {
         "id": "ACH_PENZA_NORTH",
         "name": "Going North",
-        "description": "",
+        "description": "Choose the North path when leaving Penza",
         "icon": "images/ACH_PENZA_NORTH.jpg",
         "tags": []
     },
     {
         "id": "ACH_PENZA_SOUTH",
         "name": "Going South",
-        "description": "",
+        "description": "Choose the South path when leaving Penza",
         "icon": "images/ACH_PENZA_SOUTH.jpg",
         "tags": []
     },
@@ -331,7 +331,7 @@ window.gameAchievements = [
     {
         "id": "ACH_OVERDRIVE",
         "name": "Slow and Steady",
-        "description": "Didn’t use Overdrive train speed during the whole journey",
+        "description": "Didn't use Overdrive train speed during the whole journey",
         "icon": "images/ACH_OVERDRIVE.jpg",
         "tags": []
     },
@@ -352,7 +352,7 @@ window.gameAchievements = [
     {
         "id": "ACH_TANK",
         "name": "Tanks a Lot",
-        "description": "",
+        "description": "Destroyed 5 tanks during one mission",
         "icon": "images/ACH_TANK.jpg",
         "tags": []
     },
@@ -366,7 +366,7 @@ window.gameAchievements = [
     {
         "id": "ACH_TUBERCULOSIS",
         "name": "Why Is Everyone Coughing?",
-        "description": "",
+        "description": "Had 5 soldiers with tuberculosis at the same time",
         "icon": "images/ACH_TUBERCULOSIS.jpg",
         "tags": []
     },

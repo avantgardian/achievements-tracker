@@ -44,7 +44,7 @@ window.gameAchievements = [
     {
         "id": "WatchOutBelow",
         "name": "Watch Out Below!",
-        "description": "",
+        "description": "Kill 5 enemies by dropping objects on them",
         "icon": "images/WatchOutBelow.jpg",
         "tags": []
     },
@@ -58,7 +58,7 @@ window.gameAchievements = [
     {
         "id": "LostAndFound",
         "name": "Lost and Found",
-        "description": "",
+        "description": "Find all collectibles in a mission",
         "icon": "images/LostAndFound.jpg",
         "tags": []
     },
@@ -72,7 +72,7 @@ window.gameAchievements = [
     {
         "id": "PowerNap",
         "name": "Power Nap",
-        "description": "",
+        "description": "Put 5 enemies to sleep in a single mission",
         "icon": "images/PowerNap.jpg",
         "tags": []
     },
@@ -93,49 +93,49 @@ window.gameAchievements = [
     {
         "id": "GoodbyeColorado",
         "name": "Goodbye Colorado",
-        "description": "",
+        "description": "Complete the Colorado mission",
         "icon": "images/GoodbyeColorado.jpg",
         "tags": []
     },
     {
         "id": "GoodbyeLouisiana",
         "name": "Goodbye Louisiana",
-        "description": "",
+        "description": "Complete the Louisiana mission",
         "icon": "images/GoodbyeLouisiana.jpg",
         "tags": []
     },
     {
         "id": "PackageDelivered",
         "name": "Package Delivered",
-        "description": "",
+        "description": "Deliver the package to its destination",
         "icon": "images/PackageDelivered.jpg",
         "tags": []
     },
     {
         "id": "FiveGoodShots",
         "name": "Five Good Shots",
-        "description": "",
+        "description": "Kill 5 enemies with headshots in a single mission",
         "icon": "images/FiveGoodShots.jpg",
         "tags": []
     },
     {
         "id": "WaitDidYouSayMarshal",
         "name": "Wait, Did You Say Marshal?",
-        "description": "",
+        "description": "Encounter the Marshal",
         "icon": "images/WaitDidYouSayMarshal.jpg",
         "tags": []
     },
     {
         "id": "LikeClockwork",
         "name": "Like Clockwork",
-        "description": "",
+        "description": "Complete a mission without being detected",
         "icon": "images/LikeClockwork.jpg",
         "tags": []
     },
     {
         "id": "Vendetta",
         "name": "Vendetta",
-        "description": "",
+        "description": "Complete the final mission",
         "icon": "images/Vendetta.jpg",
         "tags": []
     },
@@ -156,21 +156,21 @@ window.gameAchievements = [
     {
         "id": "Monsterkill",
         "name": "M-M-M-M-MONSTER KILL",
-        "description": "",
+        "description": "Kill 10 enemies in quick succession",
         "icon": "images/Monsterkill.jpg",
         "tags": []
     },
     {
         "id": "GunslingersCreed",
         "name": "Gunslinger's Creed",
-        "description": "",
+        "description": "Complete the game on Desperado difficulty",
         "icon": "images/GunslingersCreed.jpg",
         "tags": []
     },
     {
         "id": "SorryDad",
         "name": "Sorry Dad!",
-        "description": "",
+        "description": "Complete the game",
         "icon": "images/SorryDad.jpg",
         "tags": []
     },

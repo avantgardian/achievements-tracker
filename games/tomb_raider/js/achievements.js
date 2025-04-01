@@ -226,21 +226,21 @@ window.gameAchievements = [
     {
         "id": "NEW_ACHIEVEMENT_3_0",
         "name": "Boom Goes the Dynamite ",
-        "description": "",
+        "description": "Kill 3 enemies with a single explosion",
         "icon": "images/NEW_ACHIEVEMENT_3_0.jpg",
         "tags": []
     },
     {
         "id": "NEW_ACHIEVEMENT_3_1",
         "name": "Crab Cakes ",
-        "description": "",
+        "description": "Kill 3 crabs",
         "icon": "images/NEW_ACHIEVEMENT_3_1.jpg",
         "tags": []
     },
     {
         "id": "NEW_ACHIEVEMENT_3_2",
         "name": "Chatterbox ",
-        "description": "",
+        "description": "Find all GPS caches",
         "icon": "images/NEW_ACHIEVEMENT_3_2.jpg",
         "tags": []
     },
