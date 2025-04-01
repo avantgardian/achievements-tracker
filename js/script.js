@@ -1,32 +1,108 @@
-// Load achievements from localStorage
+// Load achievements, merging base data with user progress from localStorage
 function loadAchievements(gameId) {
-    const savedAchievements = localStorage.getItem(`${gameId}-achievements`);
-    if (savedAchievements) {
-        const parsedAchievements = JSON.parse(savedAchievements);
-        // Ensure tags array exists for each achievement
-        return parsedAchievements.map(achievement => ({
-            ...achievement,
-            tags: achievement.tags || []
-        }));
-    }
+    const baseAchievements = window.gameAchievements || []; // Ensure base data exists
+    const userProgressKey = `${gameId}-progress`;
+    const legacyAchievementsKey = `${gameId}-achievements`; // Old key
+
+    let userProgress = {};
+    const savedProgress = localStorage.getItem(userProgressKey);
+    const legacySavedData = localStorage.getItem(legacyAchievementsKey);
+
+    if (savedProgress) {
+        // New format exists, load it
+        try {
+            userProgress = JSON.parse(savedProgress);
+        } catch (e) {
+            console.error(`Error parsing user progress for ${gameId}:`, e);
+            localStorage.removeItem(userProgressKey); // Clear corrupted data
+            userProgress = {};
+        }
+    } else if (legacySavedData) {
+        // New format doesn't exist, but old format does: MIGRATE
+        console.log(`Migrating localStorage data for ${gameId}...`);
+        try {
+            const legacyAchievements = JSON.parse(legacySavedData);
+            userProgress = {};
+            legacyAchievements.forEach(ach => {
+                // Ensure ach and ach.id exist before trying to access properties
+                if (ach && ach.id !== undefined) {
+                    userProgress[ach.id] = {
+                        completed: ach.completed || false,
+                        pinned: ach.pinned || false,
+                        tags: Array.isArray(ach.tags) ? ach.tags : [] // Ensure tags is an array
+                    };
+                } else {
+                     console.warn(`Skipping invalid achievement data during migration for ${gameId}:`, ach);
+                }
+            });
+            // Save in the new format
+            localStorage.setItem(userProgressKey, JSON.stringify(userProgress));
+            // Optionally remove the old key after successful migration
+            localStorage.removeItem(legacyAchievementsKey);
+             console.log(`Migration complete for ${gameId}.`);
+        } catch (e) {
+            console.error(`Error migrating legacy data for ${gameId}:`, e);
+             // If migration fails, don't delete the old key, clear potential new key
+            localStorage.removeItem(userProgressKey);
+            userProgress = {}; 
+        }
+    } 
+    // If neither exists, userProgress remains {} and will be handled below
+
+    // Merge base data with user progress
+    const mergedAchievements = baseAchievements.map(baseAch => {
+         // Ensure baseAch and baseAch.id exist
+        if (!baseAch || baseAch.id === undefined) {
+            console.warn(`Invalid base achievement data found for ${gameId}:`, baseAch);
+            return null; // Skip invalid base achievement
+        }
+        const progress = userProgress[baseAch.id] || {}; // Get progress or empty obj
+        
+        // Ensure baseAch.tags is an array before attempting to use it
+        const baseTags = Array.isArray(baseAch.tags) ? baseAch.tags : [];
+        // Ensure progress.tags is an array
+        const savedTags = Array.isArray(progress.tags) ? progress.tags : [];
+
+        return {
+            ...baseAch, // Start with base data (id, name, desc, icon, original tags etc.)
+            completed: progress.completed || false, // Apply saved/default state
+            pinned: progress.pinned || false,       // Apply saved/default state
+             // Prefer saved tags if they exist, otherwise use base tags, fallback to empty array
+            tags: savedTags.length > 0 ? savedTags : baseTags 
+        };
+    }).filter(ach => ach !== null); // Filter out any null entries from invalid base data
+
+    // It's generally better to let callers decide when to save.
+    // Avoid saving automatically on load unless strictly necessary.
     
-    // Initialize achievements with empty tags array if not present
-    const achievements = window.gameAchievements.map(achievement => ({
-        ...achievement,
-        completed: false,
-        pinned: false,
-        tags: achievement.tags || []
-    }));
-    
-    // Save to localStorage
-    saveAchievements(gameId, achievements);
-    
-    return achievements;
+    return mergedAchievements;
 }
 
-// Save achievements to localStorage
+// Save ONLY user-specific achievement progress to localStorage
 function saveAchievements(gameId, achievements) {
-    localStorage.setItem(`${gameId}-achievements`, JSON.stringify(achievements));
+    const userProgressKey = `${gameId}-progress`;
+    const userProgress = {};
+
+    achievements.forEach(ach => {
+        // Only store state that can change and ensure ach.id exists
+        if (ach && ach.id !== undefined) {
+            userProgress[ach.id] = {
+                completed: ach.completed || false, // Ensure boolean
+                pinned: ach.pinned || false,     // Ensure boolean
+                tags: Array.isArray(ach.tags) ? ach.tags : [] // Ensure array
+            };
+        } else {
+            console.warn(`Attempted to save achievement with invalid data for ${gameId}:`, ach);
+        }
+    });
+
+    try {
+        localStorage.setItem(userProgressKey, JSON.stringify(userProgress));
+    } catch (e) {
+        console.error(`Error saving user progress for ${gameId}:`, e);
+        // Handle potential storage errors (e.g., quota exceeded)
+        alert("Failed to save progress. Local storage might be full or disabled.");
+    }
 }
 
 // Display achievements in the grid
@@ -228,11 +304,16 @@ function updateProgress(achievements) {
     document.getElementById('progress-text').textContent = `${completed}/${total} Achievements`;
 }
 
-// Reset game progress
+// Reset game progress by removing user progress data
 function resetGameProgress(gameId) {
     if (confirm('Are you sure you want to reset all progress for this game? This cannot be undone.')) {
-        localStorage.removeItem(`${gameId}-achievements`);
-        window.location.reload();
+        localStorage.removeItem(`${gameId}-progress`); // Use the new key
+        // Also attempt to remove the legacy key in case migration didn't happen or failed
+        localStorage.removeItem(`${gameId}-achievements`); 
+        // Reload to reflect the reset state by re-running loadAchievements
+        // which will now find no saved data and use defaults.
+        initializeApp(gameId); // Re-initialize the view instead of full page reload
+        // Optionally, could do a full reload: window.location.reload(); 
     }
 }
 
