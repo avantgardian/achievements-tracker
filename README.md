@@ -62,30 +62,6 @@ A simple, static web application for tracking video game achievement progress. B
 
     *Note: No build step or web server is strictly necessary for basic functionality due to the use of relative paths and `localStorage`.*
 
-## Adding a New Game
-
-1.  **Create Folder:** Create a new directory inside the `games/` folder (e.g., `games/my-new-game/`).
-2.  **Add `index.html`:** Copy an existing game's `index.html` (e.g., `games/rally-mechanic-simulator/index.html`) into the new folder.
-    *   Update the `<title>`, headings (`h1`, `h2`), breadcrumb text, and total achievement count (`progress-text` span).
-    *   Crucially, update the `gameId` variable in the inline `<script>` block at the bottom to match your new game's folder name (e.g., `const gameId = 'my-new-game';`).
-3.  **Create `js/achievements.js`:** Inside your new game's folder, create a `js` subfolder and add an `achievements.js` file. Define the achievements like in the other games:
-    ```javascript
-    window.gameAchievements = [
-        {
-            id: 1, // Unique ID within this game
-            name: "Achievement Name",
-            description: "How to get it.",
-            icon: "icon_file_name.png", // Place this icon in images/achievements/my-new-game/
-            tags: [] // Optional: Add default tags like ["story"]
-        },
-        // ... more achievements
-    ];
-    ```
-4.  **Add Images:**
-    *   Place achievement icons referenced in `achievements.js` into `images/achievements/my-new-game/`.
-    *   Add a cover image for the game list page into `images/games/my-new-game-cover.jpg` (or similar naming).
-5.  **Link from Main `index.html`:** Add a new game card entry to the main `index.html` file, linking to your new game's `index.html` and using its cover image.
-
 ## Fetching Game Data (Steam)
 
 To automatically fetch achievement data, descriptions, icons, and the game cover image directly from Steam, you can use the provided Python helper script.
