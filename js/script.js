@@ -287,9 +287,9 @@ async function togglePin(id, gameId) {
 }
 
 // Toggle achievement tag
-function toggleTag(id, tag, gameId) {
+function toggleTag(id, tag, gameId) { 
+    // console.log(`toggleTag called for id: ${id}, tag: ${tag}, gameId: ${gameId}, timestamp: ${Date.now()}`); // DEBUG LINE REMOVED
     const achievements = loadAchievements(gameId);
-    // --- FIX: Remove parseInt, compare strings directly --- 
     const achievement = achievements.find(a => a.id === id);
     
     if (achievement) {
@@ -304,15 +304,41 @@ function toggleTag(id, tag, gameId) {
             achievement.tags.splice(tagIndex, 1);
         }
         
-        saveAchievements(gameId, achievements); // Save once
-        displayAchievements(gameId); // Re-render
+        saveAchievements(gameId, achievements); // Save the updated data
+
+        // --- NEW: Target DOM update for the specific card's tags --- 
+        const cardElement = document.querySelector(`.achievement-card[data-id="${id}"]`);
+        if (cardElement) {
+            const tagsContainer = cardElement.querySelector('.achievement-tags');
+            if (tagsContainer) {
+                // Regenerate HTML only for the tags based on the updated achievement.tags
+                const newTagsHtml = achievement.tags && achievement.tags.length > 0 
+                    ? achievement.tags.map(t => getTagHtml(t)).join('') 
+                    : '';
+                
+                // Find existing tags and the button to replace smartly
+                const existingTags = tagsContainer.querySelectorAll('.achievement-tag');
+                const addTagButton = tagsContainer.querySelector('.add-tag-button');
+                const tagSelector = tagsContainer.querySelector('.tag-selector'); // Keep selector if exists
+
+                // Clear existing tags
+                existingTags.forEach(tagEl => tagEl.remove());
+
+                // Insert new tags HTML before the add button (if button exists)
+                if (addTagButton) {
+                    addTagButton.insertAdjacentHTML('beforebegin', newTagsHtml);
+                } else {
+                    // If no add button (e.g., completed), just set the innerHTML
+                    // (Might need adjustment if other elements are inside)
+                    tagsContainer.innerHTML = newTagsHtml; 
+                }
+            }
+        }
+        // --- Removed call to displayAchievements and setTimeout --- 
+
     } else {
         // Optional: Log error if achievement not found (shouldn't normally happen)
         console.error(`Achievement data not found for ID: ${id} in game: ${gameId}`);
-        // If we animated out but didn't find the data, remove the class
-        if (cardElement) {
-            cardElement.classList.remove('is-moving-out');
-        }
     }
 }
 
@@ -388,6 +414,7 @@ function initializeApp(gameId) {
         if (clickedTag && !clickedTag.matches('.add-tag-button')) {
              e.stopPropagation();
              if (!card.classList.contains('completed')) {
+                 // --- Reverted: Call toggleTag directly --- 
                  toggleTag(achievementId, clickedTag.dataset.tag, currentGameId);
              }
              return;

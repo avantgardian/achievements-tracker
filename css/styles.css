@@ -281,7 +281,7 @@ h2 {
     border-radius: var(--radius-lg);
     font-size: var(--font-size-xs);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     text-transform: capitalize;
 }
 
