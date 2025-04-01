@@ -239,7 +239,7 @@ async function toggleAchievement(id, gameId) {
 
     // --- Existing logic --- 
     const achievements = loadAchievements(gameId); // Load once
-    const achievement = achievements.find(a => a.id === parseInt(id));
+    const achievement = achievements.find(a => a.id === id);
     
     if (achievement) {
         achievement.completed = !achievement.completed;
@@ -248,6 +248,13 @@ async function toggleAchievement(id, gameId) {
         }
         saveAchievements(gameId, achievements); // Save once
         displayAchievements(gameId); // Re-render
+    } else {
+        // Optional: Log error if achievement not found (shouldn't normally happen)
+        console.error(`Achievement data not found for ID: ${id} in game: ${gameId}`);
+        // If we animated out but didn't find the data, remove the class to make it reappear
+        if (cardElement) {
+            cardElement.classList.remove('is-moving-out');
+        }
     }
 }
 
@@ -261,21 +268,29 @@ async function togglePin(id, gameId) {
         await new Promise(resolve => setTimeout(resolve, 300)); // Wait for animation (match CSS)
     }
     
-    // --- Existing logic --- 
-    const achievements = loadAchievements(gameId); // Load once
-    const achievement = achievements.find(a => a.id === parseInt(id));
-    
+    const achievements = loadAchievements(gameId);
+    // --- FIX: Remove parseInt, compare strings directly --- 
+    const achievement = achievements.find(a => a.id === id);
+
     if (achievement && !achievement.completed) {
         achievement.pinned = !achievement.pinned;
         saveAchievements(gameId, achievements); // Save once
         displayAchievements(gameId); // Re-render
+    } else {
+        // Optional: Log error if achievement not found
+        console.error(`Achievement data not found for ID: ${id} in game: ${gameId}`);
+        // If we animated out but didn't find the data, remove the class
+        if (cardElement) {
+            cardElement.classList.remove('is-moving-out');
+        }
     }
 }
 
 // Toggle achievement tag
 function toggleTag(id, tag, gameId) {
-    const achievements = loadAchievements(gameId); // Load once
-    const achievement = achievements.find(a => a.id === parseInt(id));
+    const achievements = loadAchievements(gameId);
+    // --- FIX: Remove parseInt, compare strings directly --- 
+    const achievement = achievements.find(a => a.id === id);
     
     if (achievement) {
         if (!achievement.tags) {
@@ -291,6 +306,13 @@ function toggleTag(id, tag, gameId) {
         
         saveAchievements(gameId, achievements); // Save once
         displayAchievements(gameId); // Re-render
+    } else {
+        // Optional: Log error if achievement not found (shouldn't normally happen)
+        console.error(`Achievement data not found for ID: ${id} in game: ${gameId}`);
+        // If we animated out but didn't find the data, remove the class
+        if (cardElement) {
+            cardElement.classList.remove('is-moving-out');
+        }
     }
 }
 
@@ -310,9 +332,9 @@ function resetGameProgress(gameId) {
         localStorage.removeItem(`${gameId}-progress`); // Use the new key
         // Also attempt to remove the legacy key in case migration didn't happen or failed
         localStorage.removeItem(`${gameId}-achievements`); 
-        // Reload to reflect the reset state by re-running loadAchievements
-        // which will now find no saved data and use defaults.
-        initializeApp(gameId); // Re-initialize the view instead of full page reload
+        // --- FIX: Directly call displayAchievements to re-render --- 
+        displayAchievements(gameId); // Re-render the list with default state
+        // initializeApp(gameId); // OLD: Caused re-adding listeners
         // Optionally, could do a full reload: window.location.reload(); 
     }
 }
