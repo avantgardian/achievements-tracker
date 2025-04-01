@@ -65,7 +65,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_TREASURE_RELIC",
         "name": "Relic Finder",
-        "description": "",
+        "description": "Find the Strange Relics.",
         "icon": "images/TROPHY_NAME_TREASURE_RELIC.jpg",
         "tags": []
     },
@@ -226,7 +226,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_COMBAT_NO_KILL_HARD",
         "name": "Peaceful Resolution",
-        "description": "",
+        "description": "After being marooned, leave everyone alive until the Treasury.",
         "icon": "images/TROPHY_NAME_COMBAT_NO_KILL_HARD.jpg",
         "tags": []
     },
@@ -247,105 +247,105 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_LUDONARRATIVE",
         "name": "Ludonarrative Dissonance",
-        "description": "",
+        "description": "Defeat 1,000 enemies.",
         "icon": "images/TROPHY_NAME_LUDONARRATIVE.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_LEMUR_CITY",
         "name": "Don't Feed the Animals",
-        "description": "",
+        "description": "Play with the lemur in the market and let it steal your apple.",
         "icon": "images/TROPHY_NAME_LEMUR_CITY.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_EVERY_WEAPON",
         "name": "I Accidentally All the Guns",
-        "description": "",
+        "description": "Use every weapon in the game.",
         "icon": "images/TROPHY_NAME_EVERY_WEAPON.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_KNOCK_ROCKS_DOWN",
         "name": "Not a Cairn in the World",
-        "description": "",
+        "description": "Knock over all rock cairns in Madagascar.",
         "icon": "images/TROPHY_NAME_KNOCK_ROCKS_DOWN.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_TOP_CLOCKTOWER_CITY",
         "name": "I Can See My House From Here!",
-        "description": "",
+        "description": "Climb to the very top of the Clocktower in the City.",
         "icon": "images/TROPHY_NAME_TOP_CLOCKTOWER_CITY.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_SCO_TRIAL_SOLVE",
         "name": "Trials and Tribulations",
-        "description": "",
+        "description": "Solve the first trial in Scotland in 10 moves or less.",
         "icon": "images/TROPHY_NAME_SCO_TRIAL_SOLVE.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_BANDICOOT_HIGH_SCORE",
         "name": "Best Score!",
-        "description": "",
+        "description": "Beat the best score in the retro video game.",
         "icon": "images/TROPHY_NAME_BANDICOOT_HIGH_SCORE.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_OPTIONAL_DIALOG",
         "name": "Gift of Gab",
-        "description": "",
+        "description": "Listen to all optional conversations in the game.",
         "icon": "images/TROPHY_NAME_OPTIONAL_DIALOG.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_MARCO_POLO",
         "name": "Marco Polo Returns!",
-        "description": "",
+        "description": "Play in the ocean near the sunken ship.",
         "icon": "images/TROPHY_NAME_MARCO_POLO.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_E3_DEMO_FAIL",
         "name": "Stage Fright",
-        "description": "",
+        "description": "Just prior to the City Chase, stand perfectly still for 30 seconds (stage demo fail).",
         "icon": "images/TROPHY_NAME_E3_DEMO_FAIL.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_ELENA_JEEP",
         "name": "Just Floor It!",
-        "description": "",
+        "description": "Drive away in the jeep with Elena without killing any enemies.",
         "icon": "images/TROPHY_NAME_ELENA_JEEP.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_DOLPHINS",
         "name": "On Porpoise",
-        "description": "",
+        "description": "Get three dolphins to follow the boat.",
         "icon": "images/TROPHY_NAME_DOLPHINS.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_TOY_GUN_TARGETS",
         "name": "Still Got It!",
-        "description": "",
+        "description": "Hit all targets in the attic with the toy gun.",
         "icon": "images/TROPHY_NAME_TOY_GUN_TARGETS.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_SULLY_PHOTO",
         "name": "Glamour Shot",
-        "description": "",
+        "description": "Take a photo of Sully.",
         "icon": "images/TROPHY_NAME_SULLY_PHOTO.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_SWORD_FIGHT",
         "name": "Swordmaster",
-        "description": "",
+        "description": "Perfectly parry Rafe in the sword fight without getting slashed or stabbed.",
         "icon": "images/TROPHY_NAME_SWORD_FIGHT.jpg",
         "tags": []
     },
@@ -387,21 +387,21 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_RELIC_FINDER",
         "name": "Shake For Your Fortune",
-        "description": "",
+        "description": "Ask Skeleseer a question.",
         "icon": "images/TROPHY_NAME_RELIC_FINDER.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_HOYSALA_TOKEN",
         "name": "Token For Granted",
-        "description": "",
+        "description": "Find a Hoysala token.",
         "icon": "images/TROPHY_NAME_HOYSALA_TOKEN.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_TREASURE_FINDER",
         "name": "Yas Queen",
-        "description": "",
+        "description": "Find all the Hoysala tokens and obtain the Queen\u2019s Ruby.",
         "icon": "images/TROPHY_NAME_TREASURE_FINDER.jpg",
         "tags": []
     },
@@ -436,21 +436,21 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_OPTIONAL_CONVO",
         "name": "Getting to Know You",
-        "description": "",
+        "description": "Listen to all optional conversations.",
         "icon": "images/TROPHY_NAME_OPTIONAL_CONVO.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_ALL_WEAPONS",
         "name": "Si Vis Pacem Para Bellum",
-        "description": "",
+        "description": "Use every gun in the game.",
         "icon": "images/TROPHY_NAME_ALL_WEAPONS.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_LAST_BULLET",
         "name": "Were You Counting?",
-        "description": "",
+        "description": "Defeat an enemy with the last bullet in your handgun clip.",
         "icon": "images/TROPHY_NAME_LAST_BULLET.jpg",
         "tags": []
     },
@@ -506,7 +506,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_PICK_LOCK_DANGER",
         "name": "I Was Never Here",
-        "description": "",
+        "description": "Open a lockbox with enemies nearby.",
         "icon": "images/TROPHY_NAME_PICK_LOCK_DANGER.jpg",
         "tags": []
     },
@@ -527,7 +527,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_REENTER_STEALTH",
         "name": "Now You See Me...",
-        "description": "",
+        "description": "Break stealth and re-enter stealth successfully.",
         "icon": "images/TROPHY_NAME_REENTER_STEALTH.jpg",
         "tags": []
     },
@@ -541,7 +541,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_MELEE_ONLY",
         "name": "The Way of the Warrior",
-        "description": "",
+        "description": "Make it to the outskirts of Halebidu in Chapter 5 without using a firearm or explosive.",
         "icon": "images/TROPHY_NAME_MELEE_ONLY.jpg",
         "tags": []
     },
@@ -618,35 +618,35 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_JEEP_JUMP_TIME",
         "name": "Stunt It!",
-        "description": "",
+        "description": "Get 30 seconds of total airtime with the vehicle.",
         "icon": "images/TROPHY_NAME_JEEP_JUMP_TIME.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_SHADOW_PUZZLE_FAST",
         "name": "Shadow Theater",
-        "description": "",
+        "description": "Complete the shadow puzzle in 10 moves or less.",
         "icon": "images/TROPHY_NAME_SHADOW_PUZZLE_FAST.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_MARCO_AQUEDUCT",
         "name": "Marco Po-No",
-        "description": "",
+        "description": "Play in the water in the dam in Halebidu.",
         "icon": "images/TROPHY_NAME_MARCO_AQUEDUCT.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_FAST_LOCKPICK",
         "name": "Fingersmith",
-        "description": "",
+        "description": "Pick a three-pin lock in under 15 seconds.",
         "icon": "images/TROPHY_NAME_FAST_LOCKPICK.jpg",
         "tags": []
     },
     {
         "id": "TROPHY_NAME_C4_APC_EXPLOSIONS",
         "name": "Overkill",
-        "description": "",
+        "description": "Plant multiple C4 charges on the APC at the same time and destroy it with one massive detonation.",
         "icon": "images/TROPHY_NAME_C4_APC_EXPLOSIONS.jpg",
         "tags": []
     },
@@ -681,7 +681,7 @@ window.gameAchievements = [
     {
         "id": "TROPHY_NAME_GRENADE_VEHICLE",
         "name": "Here, Catch!",
-        "description": "",
+        "description": "Destroy a vehicle in Chapter 9 with an explosive.",
         "icon": "images/TROPHY_NAME_GRENADE_VEHICLE.jpg",
         "tags": []
     },
