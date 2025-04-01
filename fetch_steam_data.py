@@ -299,46 +299,71 @@ def process_game(app_id):
     else:
         try:
             main_index_content = main_index_path.read_text(encoding='utf-8')
-            grid_end_marker = '</div>\n        </main>' # Look for closing tag of games-grid before </main>
-            grid_end_index = main_index_content.rfind(grid_end_marker)
 
-            if grid_end_index != -1:
-                # Construct new game card HTML
-                # Use relative path to the new game's index.html
-                game_page_path = f"games/{sanitized_game_name}/index.html"
-                # Use relative path to header image within the game's folder
-                # Header path needs to be relative TO THE MAIN INDEX.HTML
-                cover_image_path_relative = f"games/{sanitized_game_name}/images/header.jpg" if cover_filepath else "images/placeholder.jpg" # Add a fallback placeholder? Or leave src empty?
-                # Handle case where cover download failed
-                if not cover_filepath:
-                    print("Note: Using placeholder image path in main index.html as cover download failed or was missing.")
-                    # Example placeholder - create this image manually if needed
-                    cover_image_path_relative = "images/games/placeholder_cover.jpg"
+            # Define markers for the JavaScript array
+            array_start_marker = "const gameListData = ["
+            array_end_marker = "];" # End marker for the array
 
-
-                new_card_html = (
-                    f'                <a href="{game_page_path}" class="game-card">\n'
-                    f'                    <img src="{cover_image_path_relative}" alt="{game_name_html_safe}">\n' # Use safe name for alt text
-                    f'                    <div class="game-info">\n'
-                    f'                        <h2>{game_name_html_safe}</h2>\n' # Use safe name
-                    f'                        <p>{num_achievements} Achievements</p>\n'
-                    f'                    </div>\n'
-                    f'                </a>\n' # Indentation matches existing cards
-                )
-
-                # Insert before the grid end marker
-                updated_content = main_index_content[:grid_end_index] + new_card_html + main_index_content[grid_end_index:]
-
-                with open(main_index_path, 'w', encoding='utf-8') as f:
-                    f.write(updated_content)
-                print(f"Successfully updated main index.html with new game card.")
+            array_start_index = main_index_content.find(array_start_marker)
+            if array_start_index == -1:
+                print(f"Warning: Could not find start marker '{array_start_marker}' in index.html. Cannot add game data object.")
             else:
-                print("Warning: Could not find the end of the .games-grid section in index.html. Manual update required.")
+                # Find the end marker *after* the start marker
+                array_end_index = main_index_content.find(array_end_marker, array_start_index + len(array_start_marker))
 
+                if array_end_index != -1:
+                    # Find the start of the line containing the end marker to determine indentation and insertion point
+                    insertion_point_index = main_index_content.rfind('\n', 0, array_end_index) + 1
+                    current_line = main_index_content[insertion_point_index : array_end_index]
+                    # Extract leading whitespace (indentation) from that line
+                    existing_indentation = current_line[:len(current_line) - len(current_line.lstrip())]
+
+                    # Prepare the new game data
+                    game_page_path = f"games/{sanitized_game_name}/index.html"
+                    cover_image_path_relative = f"games/{sanitized_game_name}/images/header.jpg" if cover_filepath else "images/games/placeholder_cover.jpg"
+                    if not cover_filepath:
+                         print("Note: Using placeholder image path in main index.html as cover download failed or was missing.")
+                         # cover_image_path_relative = "images/games/placeholder_cover.jpg"
+
+                    # Escape double quotes and backslashes within names/paths for JS string safety
+                    js_safe_href = game_page_path.replace('\\', '\\\\').replace('"', '\\"')
+                    js_safe_img_src = cover_image_path_relative.replace('\\', '\\\\').replace('"', '\\"')
+                    js_safe_alt_text = game_name_html_safe.replace('\\', '\\\\').replace('"', '\\"')
+                    js_safe_title = game_name_html_safe.replace('\\', '\\\\').replace('"', '\\"')
+                    js_safe_ach_text = f"{num_achievements} Achievements".replace('\\', '\\\\').replace('"', '\\"')
+
+                    # Construct the new object string using concatenation
+                    inner_indent = existing_indentation + "    "
+                    new_game_object_lines = [
+                        existing_indentation + "{",
+                        f'{inner_indent}href: "{js_safe_href}",',
+                        f'{inner_indent}imgSrc: "{js_safe_img_src}",',
+                        f'{inner_indent}imgAlt: "{js_safe_alt_text}",',
+                        f'{inner_indent}title: "{js_safe_title}",',
+                        f'{inner_indent}achievementsText: "{js_safe_ach_text}"',
+                        existing_indentation + "}," # Trailing comma
+                    ]
+                    new_game_object_str = "\n".join(new_game_object_lines)
+
+                    # Insert the new object string right before the line containing the end marker
+                    updated_content = (
+                        main_index_content[:insertion_point_index] +  # Content before the line
+                        new_game_object_str + '\n' +             # New object string + newline
+                        main_index_content[insertion_point_index:]   # Original line with ]; and rest of file
+                    )
+
+                    with open(main_index_path, 'w', encoding='utf-8') as f:
+                        f.write(updated_content)
+                    print(f"Successfully updated main index.html with new game data object.")
+                else:
+                    print(f"Warning: Could not find end marker '{array_end_marker}' after start marker in index.html. Manual update required.")
         except IOError as e:
             print(f"Error reading/writing main index.html: {e}")
         except Exception as e:
             print(f"An unexpected error occurred during main index.html update: {e}")
+            # Optional: print traceback for debugging
+            # import traceback
+            # traceback.print_exc()
 
     print(f"--- Finished processing {game_name} ({app_id}) ---")
 

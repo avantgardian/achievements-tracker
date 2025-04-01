@@ -17,36 +17,59 @@
 
         <main>
             <div class="games-grid">
-                <a href="games/motorcycle-mechanic-simulator-2021/index.html" class="game-card">
-                    <img src="images/games/motorcycle-mechanic-simulator-2021/cover.jpg" alt="Motorcycle Mechanic Simulator 2021">
-                    <div class="game-info">
-                        <h2>Motorcycle Mechanic Simulator 2021</h2>
-                        <p>30 Achievements</p>
-                    </div>
-                </a>
-                <a href="games/rally-mechanic-simulator/index.html" class="game-card">
-                    <img src="images/games/rally-mechanic-simulator/cover.jpg" alt="Rally Mechanic Simulator">
-                    <div class="game-info">
-                        <h2>Rally Mechanic Simulator</h2>
-                        <p>22 Achievements</p>
-                    </div>
-                </a>
-                <a href="games/beyond-good-and-evil/index.html" class="game-card">
-                    <img src="images/games/beyond-good-and-evil/cover.jpg" alt="Beyond Good & Evil - 20th Anniversary Edition">
-                    <div class="game-info">
-                        <h2>Beyond Good & Evil - 20th Anniversary Edition</h2>
-                        <p>34 Achievements</p>
-                    </div>
-                </a>
-                            <a href="games/uncharted™_legacy_of_thieves_collection/index.html" class="game-card">
-                    <img src="games/uncharted™_legacy_of_thieves_collection/images/header.jpg" alt="UNCHARTED™: Legacy of Thieves Collection">
-                    <div class="game-info">
-                        <h2>UNCHARTED™: Legacy of Thieves Collection</h2>
-                        <p>101 Achievements</p>
-                    </div>
-                </a>
-</div>
+                <!-- Game cards will be loaded here by JavaScript -->
+            </div>
         </main>
     </div>
+
+    <script>
+        // Data for the game list
+        const gameListData = [
+            {
+                href: "games/motorcycle-mechanic-simulator-2021/index.html",
+                imgSrc: "images/games/motorcycle-mechanic-simulator-2021/cover.jpg",
+                imgAlt: "Motorcycle Mechanic Simulator 2021",
+                title: "Motorcycle Mechanic Simulator 2021",
+                achievementsText: "30 Achievements"
+            },
+            {
+                href: "games/rally-mechanic-simulator/index.html",
+                imgSrc: "images/games/rally-mechanic-simulator/cover.jpg",
+                imgAlt: "Rally Mechanic Simulator",
+                title: "Rally Mechanic Simulator",
+                achievementsText: "22 Achievements"
+            },
+            {
+                href: "games/beyond-good-and-evil/index.html",
+                imgSrc: "images/games/beyond-good-and-evil/cover.jpg",
+                imgAlt: "Beyond Good & Evil - 20th Anniversary Edition",
+                title: "Beyond Good & Evil - 20th Anniversary Edition",
+                achievementsText: "34 Achievements"
+            },
+            {
+                href: "games/uncharted™_legacy_of_thieves_collection/index.html",
+                imgSrc: "games/uncharted™_legacy_of_thieves_collection/images/header.jpg",
+                imgAlt: "UNCHARTED™: Legacy of Thieves Collection",
+                title: "UNCHARTED™: Legacy of Thieves Collection",
+                achievementsText: "101 Achievements"
+            },
+            {
+                href: "games/tomb_raider/index.html",
+                imgSrc: "games/tomb_raider/images/header.jpg",
+                imgAlt: "Tomb Raider",
+                title: "Tomb Raider",
+                achievementsText: "50 Achievements"
+            },
+            {
+                href: "games/desperados_iii/index.html",
+                imgSrc: "games/desperados_iii/images/header.jpg",
+                imgAlt: "Desperados III",
+                title: "Desperados III",
+                achievementsText: "36 Achievements"
+            }
+        ];
+    </script>
+    <script src="js/index_renderer.js" defer></script>
+
 </body>
 </html> 
