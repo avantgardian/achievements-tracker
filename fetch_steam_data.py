@@ -1,11 +1,11 @@
-import requests
+import requests # type: ignore
 import os
 import argparse
 import json
 import re
 import shutil # Added for file copying
 from pathlib import Path # Added for easier path manipulation
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 
 # Load environment variables from .env file
 load_dotenv()
@@ -318,6 +318,19 @@ def process_game(app_id):
                     # Extract leading whitespace (indentation) from that line
                     existing_indentation = current_line[:len(current_line) - len(current_line.lstrip())]
 
+                    # Check if the line *before* the insertion point needs a comma
+                    # Find the start of the line preceding the insertion point
+                    prev_line_start_index = main_index_content.rfind('\n', 0, insertion_point_index - 1) + 1
+                    prev_line_end_index = insertion_point_index -1 # End of the previous line (before the newline)
+                    if prev_line_start_index < prev_line_end_index: # Ensure there is a previous line
+                         prev_line_content = main_index_content[prev_line_start_index:prev_line_end_index]
+                         # If the previous line ends with '}', add a comma
+                         if prev_line_content.strip().endswith('}'):
+                             # Insert comma just before the newline of the previous line
+                             main_index_content = main_index_content[:prev_line_end_index] + ',' + main_index_content[prev_line_end_index:]
+                             # Adjust insertion point as we added a character
+                             insertion_point_index += 1
+
                     # Prepare the new game data
                     game_page_path = f"games/{sanitized_game_name}/index.html"
                     cover_image_path_relative = f"games/{sanitized_game_name}/images/header.jpg" if cover_filepath else "images/games/placeholder_cover.jpg"
@@ -347,7 +360,7 @@ def process_game(app_id):
 
                     # Insert the new object string right before the line containing the end marker
                     updated_content = (
-                        main_index_content[:insertion_point_index] +  # Content before the line
+                        main_index_content[:insertion_point_index] +  # Content before the insertion point
                         new_game_object_str + '\n' +             # New object string + newline
                         main_index_content[insertion_point_index:]   # Original line with ]; and rest of file
                     )
