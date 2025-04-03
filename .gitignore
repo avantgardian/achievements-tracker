@@ -13,6 +13,13 @@ Thumbs.db
 
 # Node Modules (Good practice even if not currently used)
 node_modules/
+package-lock.json
+yarn.lock
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
 
 # Log files
 *.log

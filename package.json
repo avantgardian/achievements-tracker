@@ -1,0 +1,23 @@
+{
+  "name": "achievements",
+  "version": "1.0.0",
+  "description": "A simple, static web application for tracking video game achievement progress. Built purely with HTML, CSS, and vanilla JavaScript, using `localStorage` for persistence.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avantgardian/achievements-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avantgardian/achievements-tracker/issues"
+  },
+  "homepage": "https://github.com/avantgardian/achievements-tracker#readme",
+  "devDependencies": {
+    "cypress": "^14.2.1"
+  }
+}
