@@ -29,25 +29,39 @@ A simple, static web application for tracking video game achievement progress. B
 
 ```
 .
+├── cypress/              # Cypress E2E testing framework
+│   ├── e2e/             # End-to-end test files
+│   └── support/         # Support files and configurations
 ├── css/
-│   └── styles.css        # Main stylesheet with CSS variables
+│   └── styles.css       # Main stylesheet with CSS variables
 ├── games/
-│   ├── <game-name>/      # Folder for each specific game
-│   │   ├── index.html    # Achievement tracker page for the game
-│   │   └── js/
-│   │       └── achievements.js # Achievement data for the game
-│   └── ...               # More game folders
+│   ├── <game-name>/     # Directory for each game
+│   │   ├── index.html   # Achievement tracker page
+│   │   ├── js/
+│   │   │   └── achievements.js  # Achievement data
+│   │   └── images/      # Achievement icons
 ├── images/
-│   ├── achievements/
-│   │   └── <game-name>/  # Achievement icons for each game
-│   └── games/            # Cover images for games list
+│   └── games/           # Cover images for games list
 ├── js/
-│   ├── script.js         # Core application logic, rendering, event handling
-│   └── tags.js           # Tag definitions and helper functions
-├── .gitignore            # Specifies intentionally untracked files
-├── index.html            # Main landing page (game list)
-└── README.md             # This file
+│   ├── script.js        # Core application logic, rendering, event handling
+│   └── tags.js          # Tag definitions and helper functions
+├── scripts/
+│   ├── fetch_steam_data.py # Python script for fetching Steam game data
+│   └── requirements.txt    # Python dependencies
+├── .gitignore          # Specifies intentionally untracked files
+├── cypress.config.js   # Cypress configuration
+├── favicon.png         # Website favicon
+├── index.html          # Main landing page (game list)
+├── package.json        # Node.js dependencies (Cypress)
+└── README.md           # This file
 ```
+
+*Note: Some files are intentionally not tracked by git and are not shown in the structure above, including:*
+- `.env` (Steam API key)
+- `CONTEXT.md` (Project overview and implementation details)
+- `SUGGESTIONS.md` (User suggestions)
+- Cypress-generated files (videos, screenshots, downloads)
+- Node.js dependencies (`node_modules/`)
 
 ## How to Use
 
