@@ -30,14 +30,14 @@ window.gameAchievements = [
     {
         "id": "IsmCompleteC5",
         "name": "Improvise. Adapt. Overcome",
-        "description": "",
+        "description": "Complete Tape 5 (the final tape)",
         "icon": "images/IsmCompleteC5.jpg",
         "tags": []
     },
     {
         "id": "IsmCompleteGame",
         "name": "Patients and Grace",
-        "description": "",
+        "description": "Complete the game",
         "icon": "images/IsmCompleteGame.jpg",
         "tags": []
     },
@@ -170,7 +170,7 @@ window.gameAchievements = [
     {
         "id": "IsmC3Lab",
         "name": "Access Granted",
-        "description": "",
+        "description": "Enter the laboratory in Tape 3",
         "icon": "images/IsmC3Lab.jpg",
         "tags": []
     },
@@ -191,7 +191,7 @@ window.gameAchievements = [
     {
         "id": "IsmC4EmptySong",
         "name": "Unsung Hero",
-        "description": "",
+        "description": "Complete the empty song puzzle in Tape 4",
         "icon": "images/IsmC4EmptySong.jpg",
         "tags": []
     },
