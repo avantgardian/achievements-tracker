@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/avantgardian/achievements-tracker#readme",
   "devDependencies": {
-    "cypress": "^14.2.1"
+    "cypress": "^14.3.0"
   }
 }
