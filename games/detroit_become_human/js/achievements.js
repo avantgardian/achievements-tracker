@@ -254,84 +254,84 @@ window.gameAchievements = [
     {
         "id": "35",
         "name": "SAFE HARBOR",
-        "description": "",
+        "description": "Successfully reach Canada with Kara and Alice",
         "icon": "images/35.jpg",
         "tags": []
     },
     {
         "id": "36",
         "name": "AN ARMY OF ME",
-        "description": "",
+        "description": "Convert all androids in the CyberLife store",
         "icon": "images/36.jpg",
         "tags": []
     },
     {
         "id": "37",
         "name": "MISSION COMPLETE",
-        "description": "",
+        "description": "Complete all of Connor's missions successfully",
         "icon": "images/37.jpg",
         "tags": []
     },
     {
         "id": "38",
         "name": "MY TURN TO DECIDE",
-        "description": "",
+        "description": "Make all major decisions as Markus",
         "icon": "images/38.jpg",
         "tags": []
     },
     {
         "id": "39",
         "name": "COMPLIANT",
-        "description": "",
+        "description": "Complete the game without any character becoming deviant",
         "icon": "images/39.jpg",
         "tags": []
     },
     {
         "id": "40",
         "name": "ONE OF US",
-        "description": "",
+        "description": "Successfully infiltrate the android camp",
         "icon": "images/40.jpg",
         "tags": []
     },
     {
         "id": "41",
         "name": "UNDEFEATED",
-        "description": "",
+        "description": "Win all fights as Markus",
         "icon": "images/41.jpg",
         "tags": []
     },
     {
         "id": "42",
         "name": "BOOKWORM",
-        "description": "",
+        "description": "Read all magazines in the game",
         "icon": "images/42.jpg",
         "tags": []
     },
     {
         "id": "43",
         "name": "PARTNERS",
-        "description": "",
+        "description": "Develop a strong relationship between Connor and Hank",
         "icon": "images/43.jpg",
         "tags": []
     },
     {
         "id": "44",
         "name": "HAPPY FAMILY",
-        "description": "",
+        "description": "Keep Kara, Alice, and Luther together until the end",
         "icon": "images/44.jpg",
         "tags": []
     },
     {
         "id": "45",
         "name": "I'LL BE BACK",
-        "description": "",
+        "description": "Die at least once in every chapter as Connor",
         "icon": "images/45.jpg",
         "tags": []
     },
     {
         "id": "46",
         "name": "THIS IS MY STORY",
-        "description": "",
+        "description": "Complete the game with only one playable character surviving",
         "icon": "images/46.jpg",
         "tags": []
     }
