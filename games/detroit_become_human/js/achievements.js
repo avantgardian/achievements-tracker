@@ -135,7 +135,7 @@ window.gameAchievements = [
     {
         "id": "18",
         "name": "JUST A MACHINE",
-        "description": "Complete the game without any character becoming deviant",
+        "description": "Kill Chloe in the menu",
         "icon": "images/18.jpg",
         "tags": []
     },
@@ -282,7 +282,7 @@ window.gameAchievements = [
     {
         "id": "39",
         "name": "COMPLIANT",
-        "description": "Complete the game without any character becoming deviant",
+        "description": "Complete the game with Connor as a machine",
         "icon": "images/39.jpg",
         "tags": []
     },
