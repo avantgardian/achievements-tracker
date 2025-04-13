@@ -9,14 +9,14 @@ window.gameAchievements = [
     {
         "id": "1",
         "name": "THANK YOU",
-        "description": "Play the first chapter",
+        "description": "Complete the first chapter",
         "icon": "images/1.jpg",
         "tags": []
     },
     {
         "id": "47",
         "name": "THESE ARE OUR STORIES",
-        "description": "Complete all magazine collections",
+        "description": "Find all magazines",
         "icon": "images/47.jpg",
         "tags": []
     },
@@ -303,35 +303,35 @@ window.gameAchievements = [
     {
         "id": "42",
         "name": "BOOKWORM",
-        "description": "Read all magazines in the game",
+        "description": "Find all magazines",
         "icon": "images/42.jpg",
         "tags": []
     },
     {
         "id": "43",
         "name": "PARTNERS",
-        "description": "Develop a strong relationship between Connor and Hank",
+        "description": "Complete the game with Hank and Connor as friends",
         "icon": "images/43.jpg",
         "tags": []
     },
     {
         "id": "44",
         "name": "HAPPY FAMILY",
-        "description": "Keep Kara, Alice, and Luther together until the end",
+        "description": "Complete the game with Kara, Alice, and Luther alive",
         "icon": "images/44.jpg",
         "tags": []
     },
     {
         "id": "45",
         "name": "I'LL BE BACK",
-        "description": "Die at least once in every chapter as Connor",
+        "description": "Complete the game with Connor dying at least once",
         "icon": "images/45.jpg",
         "tags": []
     },
     {
         "id": "46",
         "name": "THIS IS MY STORY",
-        "description": "Complete the game with only one playable character surviving",
+        "description": "Complete the game with Markus as a deviant",
         "icon": "images/46.jpg",
         "tags": []
     }
