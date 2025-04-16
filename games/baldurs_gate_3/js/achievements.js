@@ -9,49 +9,49 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest02",
         "name": "The Plot Thickens",
-        "description": "",
+        "description": "Complete Act 1 of Baldur's Gate 3 - your journey has only just begun.",
         "icon": "images/BG3_Quest02.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest03",
         "name": "The City Awaits",
-        "description": "",
+        "description": "Complete Act 2 of Baldur's Gate 3 - the city of Baldur's Gate beckons.",
         "icon": "images/BG3_Quest03.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest04",
         "name": "All's Well That Ends Well",
-        "description": "",
+        "description": "Complete Act 3 of Baldur's Gate 3 - your epic journey reaches its conclusion.",
         "icon": "images/BG3_Quest04.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest05",
         "name": "Absolute Power Corrupts",
-        "description": "",
+        "description": "Become the Absolute - seize control of the Netherbrain and dominate the world.",
         "icon": "images/BG3_Quest05.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest06",
         "name": "Hero of the Forgotten Realms",
-        "description": "",
+        "description": "Complete the game with a good-aligned character - save the world from the Absolute's threat.",
         "icon": "images/BG3_Quest06.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest07",
         "name": "Sins of the Father",
-        "description": "",
+        "description": "Complete the game as the Dark Urge - embrace or resist your dark heritage.",
         "icon": "images/BG3_Quest07.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest08",
         "name": "Ceremorphosis",
-        "description": "",
+        "description": "Complete the game without using any Illithid powers - resist the tadpole's influence.",
         "icon": "images/BG3_Quest08.jpg",
         "tags": []
     },
@@ -72,7 +72,7 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest11",
         "name": "Expand Your Mind",
-        "description": "",
+        "description": "Use an Illithid power for the first time - embrace the power of the tadpole.",
         "icon": "images/BG3_Quest11.jpg",
         "tags": []
     },
@@ -121,63 +121,63 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest18",
         "name": "You Have Two Hands for a Reason",
-        "description": "",
+        "description": "Dual-wield two different weapons - versatility is the key to survival.",
         "icon": "images/BG3_Quest18.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest19",
         "name": "Rude, Crude, and Full of Attitude",
-        "description": "",
+        "description": "Recruit Karlach into your party - the fiery tiefling barbarian.",
         "icon": "images/BG3_Quest19.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest20",
         "name": "Forged in Blood and Fire",
-        "description": "",
+        "description": "Complete Karlach's personal quest - help her find a way to survive her infernal engine.",
         "icon": "images/BG3_Quest20.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest21",
         "name": "Under Lock and Key",
-        "description": "",
+        "description": "Recruit Minthara into your party - the drow paladin of the Absolute.",
         "icon": "images/BG3_Quest21.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest22",
         "name": "She Cannot Be Caged!",
-        "description": "",
+        "description": "Free Shadowheart from the pod on the nautiloid - the mysterious cleric of Shar.",
         "icon": "images/BG3_Quest22.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest23",
         "name": "Taking Blood",
-        "description": "",
+        "description": "Recruit Astarion into your party - the charming vampire spawn.",
         "icon": "images/BG3_Quest23.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest24",
         "name": "Leave No One Behind",
-        "description": "",
+        "description": "Save all the tiefling refugees in the Emerald Grove - protect the innocent.",
         "icon": "images/BG3_Quest24.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest25",
         "name": "Murder in Baldur's Gate",
-        "description": "",
+        "description": "Complete the Dark Urge's personal quest - confront your dark past.",
         "icon": "images/BG3_Quest25.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest26",
         "name": "Mind Blown",
-        "description": "",
+        "description": "Use the tadpole's powers to dominate the Netherbrain - embrace ultimate power.",
         "icon": "images/BG3_Quest26.jpg",
         "tags": []
     },
@@ -219,14 +219,14 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest32",
         "name": "Pest Control",
-        "description": "",
+        "description": "Defeat the Phase Spider Matriarch in the Whispering Depths - clear out the infestation.",
         "icon": "images/BG3_Quest32.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest33",
         "name": "A Grym Fate",
-        "description": "",
+        "description": "Defeat Grym without using the Adamantine Forge hammer - prove your combat prowess.",
         "icon": "images/BG3_Quest33.jpg",
         "tags": []
     },
@@ -247,7 +247,7 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest36",
         "name": "No Free Lunches",
-        "description": "",
+        "description": "Defeat the Hungry Sahuagin in the Underdark - they'll never eat again.",
         "icon": "images/BG3_Quest36.jpg",
         "tags": []
     },
@@ -261,14 +261,14 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest38",
         "name": "First Blood",
-        "description": "",
+        "description": "Defeat Orin the Red in a duel - prove yourself the better assassin.",
         "icon": "images/BG3_Quest38.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest39",
         "name": "Interfectorem Draconis",
-        "description": "",
+        "description": "Defeat the Red Dragon in the Wyrmway - slay the mighty beast.",
         "icon": "images/BG3_Quest39.jpg",
         "tags": []
     },
@@ -317,49 +317,49 @@ window.gameAchievements = [
     {
         "id": "BG3_Quest46",
         "name": "Repairing the Weave",
-        "description": "",
+        "description": "Complete Gale's personal quest - help him find a way to control the Netherese orb.",
         "icon": "images/BG3_Quest46.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest47",
         "name": "The Lich-Queen's Wrath",
-        "description": "",
+        "description": "Complete Lae'zel's personal quest - help her confront Vlaakith's deception.",
         "icon": "images/BG3_Quest47.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest48",
         "name": "To Bloom in Darkest Night",
-        "description": "",
+        "description": "Complete Shadowheart's personal quest - help her find her true path.",
         "icon": "images/BG3_Quest48.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest49",
         "name": "Hot Date",
-        "description": "",
+        "description": "Complete Wyll's personal quest - help him confront his past and future.",
         "icon": "images/BG3_Quest49.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest50",
         "name": "Just a Nibble",
-        "description": "",
+        "description": "Let Astarion drink your blood - trust the vampire spawn.",
         "icon": "images/BG3_Quest50.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest51",
         "name": "Loophole",
-        "description": "",
+        "description": "Complete Astarion's personal quest - help him break free from Cazador's control.",
         "icon": "images/BG3_Quest51.jpg",
         "tags": []
     },
     {
         "id": "BG3_Quest52",
         "name": "Embrace Your Urge",
-        "description": "",
+        "description": "Complete the Dark Urge's personal quest by embracing your dark nature.",
         "icon": "images/BG3_Quest52.jpg",
         "tags": []
     },
