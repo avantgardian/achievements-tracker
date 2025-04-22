@@ -384,6 +384,9 @@ function initializeApp(gameId) {
     // Store gameId on the grid element for the listener to access
     achievementsGrid.dataset.gameId = gameId;
 
+    // Display achievements
+    displayAchievements(gameId);
+
     // --- Attach Delegated Event Listener ONCE --- 
     achievementsGrid.addEventListener('click', (e) => {
         const currentGrid = e.currentTarget; // Use currentTarget to get the grid
