@@ -1,10 +1,5 @@
 // Load achievements, merging base data with user progress from localStorage
 function loadAchievements(gameId) {
-    // DEBUGGING START
-    console.log(`loadAchievements called for gameId: "${gameId}"`);
-    console.log('Current window.gameAchievements:', window.gameAchievements);
-    // DEBUGGING END
-
     const baseAchievements = window.gameAchievements || []; // Ensure base data exists
     const userProgressKey = `${gameId}-progress`;
     const legacyAchievementsKey = `${gameId}-achievements`; // Old key
