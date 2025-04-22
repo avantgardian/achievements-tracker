@@ -1,5 +1,10 @@
 // Load achievements, merging base data with user progress from localStorage
 function loadAchievements(gameId) {
+    // DEBUGGING START
+    console.log(`loadAchievements called for gameId: "${gameId}"`);
+    console.log('Current window.gameAchievements:', window.gameAchievements);
+    // DEBUGGING END
+
     const baseAchievements = window.gameAchievements || []; // Ensure base data exists
     const userProgressKey = `${gameId}-progress`;
     const legacyAchievementsKey = `${gameId}-achievements`; // Old key
@@ -230,27 +235,32 @@ function generateAchievementCard(achievement, gameId) {
 // Toggle achievement completion
 async function toggleAchievement(id, gameId) {
     const cardElement = document.querySelector(`.achievement-card[data-id="${id}"]`);
-    
+
     // Add class and wait for animation if the card exists
     if (cardElement) {
         cardElement.classList.add('is-moving-out');
         await new Promise(resolve => setTimeout(resolve, 300)); // Wait for animation (match CSS)
     }
 
-    // --- Existing logic --- 
-    const achievements = loadAchievements(gameId); // Load once
-    const achievement = achievements.find(a => a.id === id);
-    
-    if (achievement) {
-        achievement.completed = !achievement.completed;
-        if (achievement.completed) {
-            achievement.pinned = false; // Unpin when completed
+    // --- MODIFICATION START ---
+    // Assume the achievement exists since the card was clicked.
+    // Fetch current state just for saving.
+    const currentAchievements = loadAchievements(gameId);
+    // --- FIX: Parse the id string from dataset to integer for comparison ---
+    const achievementToUpdate = currentAchievements.find(a => a.id === parseInt(id));
+
+    if (achievementToUpdate) {
+        achievementToUpdate.completed = !achievementToUpdate.completed;
+        if (achievementToUpdate.completed) {
+            achievementToUpdate.pinned = false; // Unpin when completed
         }
-        saveAchievements(gameId, achievements); // Save once
-        displayAchievements(gameId); // Re-render
+        saveAchievements(gameId, currentAchievements); // Save the modified list
+        displayAchievements(gameId); // Re-render using loadAchievements
+    // --- MODIFICATION END ---
     } else {
-        // Optional: Log error if achievement not found (shouldn't normally happen)
-        console.error(`Achievement data not found for ID: ${id} in game: ${gameId}`);
+        // This block should ideally not be reached if the card existed,
+        // but keep the error log just in case.
+        console.error(`[toggleAchievement] Achievement data not found for ID: ${id} in game: ${gameId} after assuming it exists.`);
         // If we animated out but didn't find the data, remove the class to make it reappear
         if (cardElement) {
             cardElement.classList.remove('is-moving-out');
@@ -269,8 +279,8 @@ async function togglePin(id, gameId) {
     }
     
     const achievements = loadAchievements(gameId);
-    // --- FIX: Remove parseInt, compare strings directly --- 
-    const achievement = achievements.find(a => a.id === id);
+    // --- FIX: Parse the id string from dataset to integer for comparison ---
+    const achievement = achievements.find(a => a.id === parseInt(id));
 
     if (achievement && !achievement.completed) {
         achievement.pinned = !achievement.pinned;
@@ -290,7 +300,8 @@ async function togglePin(id, gameId) {
 function toggleTag(id, tag, gameId) { 
     // console.log(`toggleTag called for id: ${id}, tag: ${tag}, gameId: ${gameId}, timestamp: ${Date.now()}`); // DEBUG LINE REMOVED
     const achievements = loadAchievements(gameId);
-    const achievement = achievements.find(a => a.id === id);
+    // --- FIX: Parse the id string from dataset to integer for comparison ---
+    const achievement = achievements.find(a => a.id === parseInt(id));
     
     if (achievement) {
         if (!achievement.tags) {
@@ -383,9 +394,6 @@ function initializeApp(gameId) {
 
     // Store gameId on the grid element for the listener to access
     achievementsGrid.dataset.gameId = gameId;
-
-    // Display achievements
-    displayAchievements(gameId);
 
     // --- Attach Delegated Event Listener ONCE --- 
     achievementsGrid.addEventListener('click', (e) => {
